@@ -1,19 +1,25 @@
 const express = require('express');
 const app = express();
-const port = process.env.port || 5000;
-const db = require('./db');
-const carsRoute = require('./routes/carsRoutes');
+const port = process.env.PORT || 5000;
 const cors = require("cors");
+const db = require('./db');
 
-// app.use(cors());
+// Routes
+const carsRoute = require('./routes/carsRoutes');
+const usersRoute = require('./routes/usersRoutes');
+const bookingsRoute = require('./routes/bookingsRoutes');
+
+// Enable CORS for your Vercel frontend URL
 app.use(cors({ origin: 'https://car-rental-five-zeta.vercel.app' }));
 
-app.use(express.static("public"))
-
+// Middleware
+app.use(express.static("public"));
 app.use(express.json());
-app.use('/api/users/',require('./routes/usersRoutes'))
-app.use('/api/bookings/',require('./routes/bookingsRoutes'))
 
-app.listen(port,()=>console.log(`node js server started in ${port}`));
+// Use routes with base paths
+app.use('/api/cars', carsRoute);
+app.use('/api/users', usersRoute);
+app.use('/api/bookings', bookingsRoute);
 
-app.use(carsRoute);
+// Start the server
+app.listen(port, () => console.log(`Node.js server started on port ${port}`));
