@@ -3,7 +3,7 @@ const router = express.Router();
 const Car = require("../models/carModel")
 
 
-router.get("/api/getallcars", async(req, res) => {
+router.get("/getallcars", async(req, res) => {
     try {
     const cars = await Car.find()
     res.send(cars)
@@ -12,7 +12,7 @@ router.get("/api/getallcars", async(req, res) => {
     }
 });
 
-router.post("/api/addcar", async(req, res) => {
+router.post("/addcar", async(req, res) => {
     try {
     const newcar = new Car(req.body)
     await newcar.save()
@@ -23,7 +23,7 @@ router.post("/api/addcar", async(req, res) => {
 });
 
 
-router.post("/api/editcar", async(req, res) => {
+router.post("/editcar", async(req, res) => {
     try {
     const car = await Car.findOne({_id:req.body._id})
     car.name = req.body.name
@@ -41,7 +41,7 @@ router.post("/api/editcar", async(req, res) => {
     }
 });
 
-router.post("/api/deletecar", async(req, res) => {
+router.post("/deletecar", async(req, res) => {
     try {
     const car = await Car.findOneAndDelete({_id:req.body.carid})
     
