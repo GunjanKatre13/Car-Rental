@@ -6,7 +6,7 @@ export const getAllCars=()=>async dispatch=>{
 
     dispatch({type: 'LOADING', payload:true})
         try {
-        const response = await axios.get('http://localhost:5000/api/cars/getallcars')
+        const response = await axios.get('https://car-rental-8pg2.onrender.com/api/cars/getallcars')
         dispatch({type: 'GET_ALL_CARS', payload:response.data})
         dispatch({type: 'LOADING', payload:false})
         
@@ -23,7 +23,7 @@ export const getAllCars=()=>async dispatch=>{
 
         dispatch({type: 'LOADING', payload:true})
             try {
-            const response = await axios.post('http://localhost:5000/api/cars/addcar',reqObj)
+            const response = await axios.post('https://car-rental-8pg2.onrender.com/api/cars/addcar',reqObj)
             
             dispatch({type: 'LOADING', payload:false})
             message.success('New car added successfully')
@@ -42,7 +42,7 @@ export const getAllCars=()=>async dispatch=>{
 
         dispatch({type: 'LOADING', payload:true})
             try {
-            const response = await axios.post('http://localhost:5000/api/cars/editcar',reqObj)
+            const response = await axios.post('https://car-rental-8pg2.onrender.com/api/cars/editcar',reqObj)
             
             dispatch({type: 'LOADING', payload:false})
             message.success('Car details updated successfully')
@@ -61,7 +61,7 @@ export const getAllCars=()=>async dispatch=>{
 
         dispatch({type: 'LOADING', payload:true})
             try {
-            const response = await axios.post('http://localhost:5000/api/cars/deletecar',reqObj)
+            const response = await axios.post('https://car-rental-8pg2.onrender.com/api/cars/deletecar',reqObj)
             
             dispatch({type: 'LOADING', payload:false})
             message.success('Car deleted successfully')
