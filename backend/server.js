@@ -6,22 +6,7 @@ const carsRoute = require('./routes/carsRoutes');
 const cors = require("cors");
 
 // app.use(cors());
-// app.use(cors({ origin: 'https://car-rental-five-zeta.vercel.app/' }));
-
-const allowedOrigins = [
-  'https://car-rental-five-zeta.vercel.app',
-  'https://car-rental-five-zeta.vercel.app/'
-];
-
-app.use(cors({
-  origin: function (origin, callback) {
-    if (allowedOrigins.includes(origin) || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  }
-}));
+app.use(cors({ origin: 'https://car-rental-five-zeta.vercel.app' }));
 
 app.use(express.static("public"))
 
