@@ -20,7 +20,7 @@ function App() {
         <Route path="/booking/:carid" exact element={<ProtectedRoute ><BookingCar/></ProtectedRoute>}/>
         <Route path="/userbookings" exact element={<ProtectedRoute ><UserBookings/></ProtectedRoute>}/>
         <Route path="/addcar" exact element={<ProtectedRoute ><AddCar/></ProtectedRoute>}/>
-        <Route path="/admin" exact element={<ProtectedRoute ><AdminHome/></ProtectedRoute>}/>
+        <Route path="/admin" exact element={<AdminHome/>} />
         <Route path="/editcar/:carid" exact element={<ProtectedRoute ><EditCar/></ProtectedRoute>}/>
       </Routes>
       </BrowserRouter>
